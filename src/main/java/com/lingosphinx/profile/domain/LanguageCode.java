@@ -11,6 +11,7 @@ import lombok.*;
 @Builder
 @JsonSerialize(using = LanguageCodeSerializer.class)
 @JsonDeserialize(using = LanguageCodeDeserializer.class)
+@EqualsAndHashCode
 public class LanguageCode {
     public static final LanguageCode ENGLISH = LanguageCode.builder().value("english").build();
     String value;

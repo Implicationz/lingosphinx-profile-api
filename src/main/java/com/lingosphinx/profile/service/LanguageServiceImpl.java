@@ -49,8 +49,7 @@ public class LanguageServiceImpl implements LanguageService {
         var existingLanguage = languageRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Language not found"));
         languageMapper.updateEntityFromDto(languageDto, existingLanguage);
-        var savedLanguage = languageRepository.save(existingLanguage);
-        return languageMapper.toDto(savedLanguage);
+        return languageMapper.toDto(existingLanguage);
     }
 
     @Override
