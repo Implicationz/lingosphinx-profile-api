@@ -19,7 +19,8 @@ public class ProfileDto {
     private Long id;
     private UUID userId;
     private String name;
-    private Subscription subscription;
+    @Builder.Default
+    private SubscriptionDto subscription = new SubscriptionDto();
     @Builder.Default
     private List<ProfileLanguage> languages = new ArrayList<>();
 }

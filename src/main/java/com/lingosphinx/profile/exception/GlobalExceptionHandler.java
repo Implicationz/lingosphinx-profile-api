@@ -27,6 +27,30 @@ public class GlobalExceptionHandler {
                 ));
     }
 
+    @ExceptionHandler(StripeServiceException.class)
+    public ResponseEntity<Map<String, Object>> handleStripeServiceException(StripeServiceException ex) {
+        log.error("Stripe Service error: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of(
+                        "timestamp", LocalDateTime.now(),
+                        "status", 500,
+                        "error", "Stripe Service Error",
+                        "message", ex.getMessage()
+                ));
+    }
+
+    @ExceptionHandler(StripeWebhookException.class)
+    public ResponseEntity<Map<String, Object>> handleStripeWebhookException(StripeWebhookException ex) {
+        log.error("Stripe Webhook error: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of(
+                        "timestamp", LocalDateTime.now(),
+                        "status", 500,
+                        "error", "Stripe Webhook Error",
+                        "message", ex.getMessage()
+                ));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneralException(Exception ex) {
         log.error("Unhandled exception: {}", ex.getMessage(), ex);

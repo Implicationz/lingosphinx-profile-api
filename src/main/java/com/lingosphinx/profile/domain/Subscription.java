@@ -19,10 +19,11 @@ public class Subscription {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Builder.Default
-    private Subscription.Type type = Subscription.Type.Free;
+    private Subscription.Type type = Subscription.Type.FREE;
+    private String stripeId;
 
     public enum Type {
-        Free,
-        Premium
+        FREE,
+        PREMIUM
     }
 }

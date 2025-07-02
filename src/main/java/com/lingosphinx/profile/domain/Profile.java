@@ -35,7 +35,8 @@ public class Profile {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
-    private Subscription subscription = null;
+    @Builder.Default
+    private Subscription subscription = new Subscription();
 
     @Builder.Default
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
