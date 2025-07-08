@@ -29,6 +29,21 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.readById(id));
     }
 
+    @PostMapping("/current")
+    public ResponseEntity<ProfileDto> createByCurrentUser(@RequestBody @Valid ProfileDto profile) {
+        return ResponseEntity.ok(profileService.createByCurrentUser());
+    }
+
+    @PutMapping("/current")
+    public ResponseEntity<ProfileDto> updateByCurrentUser(@RequestBody @Valid ProfileDto profile) {
+        return ResponseEntity.ok(profileService.updateByCurrentUser(profile));
+    }
+
+    @GetMapping("/current")
+    public ResponseEntity<ProfileDto> readByCurrentUser() {
+        return ResponseEntity.ok(profileService.readByCurrentUser());
+    }
+
     @GetMapping
     public ResponseEntity<List<ProfileDto>> readAll() {
         return ResponseEntity.ok(profileService.readAll());

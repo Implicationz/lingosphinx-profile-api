@@ -2,7 +2,9 @@ package com.lingosphinx.profile.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
+@BatchSize(size = 10)
 @Entity
 @Table(
         name = "language",
@@ -23,7 +25,7 @@ import lombok.*;
 public class Language {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false, unique = true)

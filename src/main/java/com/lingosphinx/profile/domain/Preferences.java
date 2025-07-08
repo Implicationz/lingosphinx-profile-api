@@ -3,10 +3,7 @@ package com.lingosphinx.profile.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
-import jakarta.persistence.Convert;
-import org.hibernate.annotations.JdbcTypeCode;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import org.hibernate.type.SqlTypes;
 
 
 import java.util.HashMap;
@@ -22,7 +19,7 @@ import java.util.UUID;
 public class Preferences {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
     private Long id;
 

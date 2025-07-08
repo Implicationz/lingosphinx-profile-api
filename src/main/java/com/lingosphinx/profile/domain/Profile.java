@@ -2,6 +2,7 @@ package com.lingosphinx.profile.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.UUID;
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "user_id", nullable = false, unique = true)
@@ -38,6 +39,7 @@ public class Profile {
     @Builder.Default
     private Subscription subscription = new Subscription();
 
+    @BatchSize(size = 10)
     @Builder.Default
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProfileLanguage> languages = new ArrayList<>();

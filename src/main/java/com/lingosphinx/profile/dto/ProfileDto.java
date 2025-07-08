@@ -1,8 +1,5 @@
 package com.lingosphinx.profile.dto;
 
-import com.lingosphinx.profile.domain.ProfileLanguage;
-import com.lingosphinx.profile.domain.Subscription;
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -22,5 +19,5 @@ public class ProfileDto {
     @Builder.Default
     private SubscriptionDto subscription = new SubscriptionDto();
     @Builder.Default
-    private List<ProfileLanguage> languages = new ArrayList<>();
+    private List<ProfileLanguageDto> languages = new ArrayList<>();
 }
