@@ -43,17 +43,8 @@ jobs:
           script: |
             echo "Pulling latest image..."
             docker pull ghcr.io/implicationz/lingoala-profile-api:latest
-            
-            echo "Stopping old container if running..."
-            docker stop lingoala-profile-api || true
-            docker rm lingoala-profile-api || true
-            
-            echo "Starting container with latest image..."
-            docker run -d \
-              --name lingoala-profile-api \
-              --env-file /etc/lingoala/lingoala.env \
-              --env-file /etc/lingoala/lingoala-profile-api.env \
-              -p 8081:8080 \
-              ghcr.io/implicationz/lingoala-profile-api:latest
-            
+      
+            echo "Restarting systemd service..."
+            sudo systemctl restart lingoala-profile-api
+      
             echo "Deployment finished."
